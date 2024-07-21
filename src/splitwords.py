@@ -1,9 +1,6 @@
 from pathlib import Path
+import              re
 
-from spellchecker import SpellChecker
-import re
-
-spell = SpellChecker(language='fr')
 
 text = """
 Voici un exemple ping-pong de texte avec des mots et des formules mathématiques.
@@ -15,10 +12,6 @@ NOT_WORD_LIKE_PATTERN = re.compile(r'[^àéèa-zA-Z-]')
 
 def isword(word):
     return not bool(NOT_WORD_LIKE_PATTERN.search(word))
-
-def correct_word(word):
-    corrected_word = spell.candidates(word)
-    return corrected_word
 
 
 new_text = []
@@ -34,16 +27,17 @@ for line in text.split('\n'):
     if line.strip():
         for word in line.split(' '):
             if word.strip():
-                if not isword(word):
-                    word = f"`{word}`"
-
-                else:
-                    corrected_words = correct_word(word)
-
-                    print(word, corrected_words)
-                    # exit()
-
-                    word = f"[[{'|'.join(corrected_words)}]]"
+                if not(
+                    word in PUNCTUATIONS
+                    or
+                    isword(word)
+                ):
+                    if (
+                        word[0] != "`"
+                        or
+                        word[-1] != "`"
+                    ):
+                        word = f"`{word}`"
 
             new_line.append(word)
 
