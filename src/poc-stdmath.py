@@ -6,7 +6,7 @@ import              re
 # -- REGEX TACTICS -- #
 # ------------------- #
 
-SHORT_POWER_PATTERN = re.compile(r'([a-zA-Z\d]+)(\d+)')
+SHORT_POWER_PATTERN = re.compile(r'([a-zA-Z]+)(\d+)')
 
 def short_power_match(match):
     x = match.group(1)
