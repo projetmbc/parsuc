@@ -4,3 +4,7 @@ parsuc - TODO
 
 
 // ---------- //
+
+backtick
+
+    --> avant ajout, on compte et vérifie qu'il n'y a pas des ``
