@@ -1,0 +1,10 @@
+general:
+  desc   : The aim of this project is to analyze mathematical texts that
+           have been written without using a known language.
+  acronym: PARS.ing of U.nusual C.ontent
+  author : Christophe BAL
+  licence: gnu 3
+  lang   :
+    - doc: fr
+  require:
+    - python
